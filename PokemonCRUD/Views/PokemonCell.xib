@@ -11,35 +11,47 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="pokemoncell" rowHeight="113" id="KGk-i7-Jjw" customClass="PokemonCell" customModule="PokemonCRUD" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="293" height="113"/>
+            <rect key="frame" x="0.0" y="0.0" width="467" height="113"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="293" height="113"/>
+                <rect key="frame" x="0.0" y="0.0" width="467" height="113"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bp8-O8-jIL">
-                        <rect key="frame" x="0.0" y="0.0" width="293" height="113"/>
+                        <rect key="frame" x="0.0" y="0.0" width="467" height="113"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U9i-RF-DSw">
                                 <rect key="frame" x="10" y="10.000000000000002" width="36" height="22.666666666666671"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="36" id="Xct-37-zZf"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LabelName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Giz-hq-Lwa">
-                                <rect key="frame" x="56" y="10.000000000000002" width="57.333333333333343" height="22.666666666666671"/>
+                                <rect key="frame" x="56" y="10" width="401" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="B0K-cF-4OD"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Url :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FeD-sA-9lo">
-                                <rect key="frame" x="9.9999999999999982" y="42.666666666666664" width="21.333333333333329" height="22.666666666666664"/>
+                                <rect key="frame" x="10" y="42.666666666666664" width="22" height="22.666666666666664"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="22" id="2L2-GM-sWv"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LabelURL" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N6a-nC-RaR">
-                                <rect key="frame" x="41.333333333333343" y="42.666666666666664" width="51.666666666666657" height="22.666666666666664"/>
+                                <rect key="frame" x="42" y="45" width="415" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="LIe-Jx-FHg"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -49,20 +61,22 @@
                         <constraints>
                             <constraint firstItem="N6a-nC-RaR" firstAttribute="top" secondItem="Giz-hq-Lwa" secondAttribute="bottom" constant="10" id="2Ld-s1-HPT"/>
                             <constraint firstItem="Giz-hq-Lwa" firstAttribute="leading" secondItem="U9i-RF-DSw" secondAttribute="trailing" constant="10" id="CcG-fM-Mi8"/>
+                            <constraint firstAttribute="trailing" secondItem="Giz-hq-Lwa" secondAttribute="trailing" constant="10" id="EQe-hb-Uap"/>
                             <constraint firstItem="FeD-sA-9lo" firstAttribute="leading" secondItem="Bp8-O8-jIL" secondAttribute="leading" constant="10" id="Gsf-Wi-Vmi"/>
                             <constraint firstItem="U9i-RF-DSw" firstAttribute="top" secondItem="Bp8-O8-jIL" secondAttribute="top" constant="10" id="HQv-xq-0YR"/>
                             <constraint firstItem="N6a-nC-RaR" firstAttribute="leading" secondItem="FeD-sA-9lo" secondAttribute="trailing" constant="10" id="XgJ-YE-SWS"/>
                             <constraint firstItem="Giz-hq-Lwa" firstAttribute="top" secondItem="Bp8-O8-jIL" secondAttribute="top" constant="10" id="b3I-jy-gM4"/>
                             <constraint firstItem="FeD-sA-9lo" firstAttribute="top" secondItem="U9i-RF-DSw" secondAttribute="bottom" constant="10" id="gYo-JD-vth"/>
                             <constraint firstItem="U9i-RF-DSw" firstAttribute="leading" secondItem="Bp8-O8-jIL" secondAttribute="leading" constant="10" id="hSW-7v-nlr"/>
+                            <constraint firstAttribute="trailing" secondItem="N6a-nC-RaR" secondAttribute="trailing" constant="10" id="s23-Xp-j8Z"/>
                         </constraints>
                     </view>
                 </subviews>
                 <constraints>
                     <constraint firstItem="Bp8-O8-jIL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="2Zx-Cg-CHz"/>
                     <constraint firstItem="Bp8-O8-jIL" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="5Gn-XW-3ou"/>
+                    <constraint firstAttribute="trailing" secondItem="Bp8-O8-jIL" secondAttribute="trailing" id="KXg-LC-omB"/>
                     <constraint firstAttribute="bottom" secondItem="Bp8-O8-jIL" secondAttribute="bottom" id="h2O-MW-4p4"/>
-                    <constraint firstAttribute="trailing" secondItem="Bp8-O8-jIL" secondAttribute="trailing" id="tR1-Ai-kTL"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -70,7 +84,7 @@
                 <outlet property="labelName" destination="Giz-hq-Lwa" id="AJC-Mo-kDQ"/>
                 <outlet property="labelURL" destination="N6a-nC-RaR" id="wb4-fy-d8X"/>
             </connections>
-            <point key="canvasLocation" x="19.083969465648853" y="13.028169014084508"/>
+            <point key="canvasLocation" x="151.90839694656489" y="13.028169014084508"/>
         </tableViewCell>
     </objects>
     <resources>

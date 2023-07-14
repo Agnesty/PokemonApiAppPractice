@@ -8,9 +8,9 @@
 import UIKit
 
 class HomeController: UIViewController {
-    let pokemonList = [SpecificPokemon]()
+    var pokemonListing = [SpecificPokemon]()
     
-    let myPokemonManager = PokemonManager()
+    var myPokemonManager = PokemonManager()
     @IBOutlet weak var tableView: UITableView! {
         didSet {
             tableView.dataSource = self
@@ -21,7 +21,12 @@ class HomeController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        myPokemonManager.fetchDataFromAPI()
+        myPokemonManager.fetchDataFromAPI { pokemon in
+            self.pokemonListing.append(contentsOf: pokemon.results)
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
     }
 
 
@@ -29,12 +34,9 @@ class HomeController: UIViewController {
 
 extension HomeController: UITableViewDelegate, UITableViewDataSource {
     
-    
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("jumlah : \(pokemonList.count)")
-        return pokemonList.count
-        
+        print("jumlah : \(pokemonListing.count)")
+        return pokemonListing.count
         
     }
 
@@ -43,13 +45,17 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
 
-        let pokemon = pokemonList[indexPath.row]
+        let pokemon = pokemonListing[indexPath.row]
         
         cell.labelName.text = pokemon.name
         cell.labelURL.text = pokemon.url
         
                 return cell
        
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
     }
 }
 

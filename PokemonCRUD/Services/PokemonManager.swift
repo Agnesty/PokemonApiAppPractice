@@ -8,48 +8,68 @@
 import Foundation
 
 class PokemonManager {
-    var getPokemon: [SpecificPokemon] = []
-//    func fetchDataFromAPI() {
-//            guard let url = URL(string: "https://pokeapi.co/api/v2/pokemon/") else {
-//                return
-//            }
-//
-//            let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-//                if let error = error {
-//                    print("Error: \(error)")
-//                    return
-//                }
-//
-//                guard let data = data else {
-//                    print("No data received")
-//                    return
-//                }
-//
-//                do {
-//                    let pokemonList = try JSONDecoder().decode(Pokemon.self, from: data)
-//                    DispatchQueue.main.async {
-//                            self.getPokemon = pokemonList.results
-//                        }
-//
-//                    // Accessing the names using the model
-//                    for pokemon in pokemonList.results {
-//                        let name = pokemon.name
-//                        print("Name: \(name)")
-//                    }
-//                } catch {
-//                    print("Error while decoding JSON: \(error)")
-//                }
-//            }
-//
-//            task.resume()
-//        }
     
     func fetchDataFromAPI(completionHandler: @escaping (Pokemon) -> Void) {
-            
-           let pokemonResults = [Pokemon]()
+        guard let url = URL(string: "https://pokeapi.co/api/v2/pokemon?offset=0&limit=100") else { return }
         
-        // Calling WebApi for get data
+            URLSession.shared.dataTask(with: url) { (data, response, error) in
+                // handle error
+                if let error = error {
+                        print("Failed to fetch data with error: ", error.localizedDescription)
+                        return
+                    }
+                guard let data = data,                              // is there data
+                    let response = response as? HTTPURLResponse,  // is there HTTP response
+                    200 ..< 300 ~= response.statusCode,           // is statusCode 2XX
+                    error == nil                                  // was there no error
+                        
+                    else { return }
+                 
+                    do {
+                        guard let pokemon = try? JSONDecoder().decode(Pokemon.self, from: data) else { return }
+                        completionHandler(pokemon)
+                        
+                        for pok in pokemon.results {
+                            let name = pok.name
+                            print("Name: \(name)")
+                        }
+
+                    }
+
+                }.resume()
         
-            completionHandler(pokemonResults)
         }
-}
+    
+    func getDetail(abilitiesURL: String, completion: @escaping (DetailPokemon) -> Void) {
+        let url = URL(string: abilitiesURL)
+        URLSession.shared.dataTask(with: url!) { (data, response, error) in
+            if let error = error {
+                    print("Failed to fetch data with error: ", error.localizedDescription)
+                    return
+                }
+            guard let data = data,                              // is there data
+                let response = response as? HTTPURLResponse,  // is there HTTP response
+                200 ..< 300 ~= response.statusCode,           // is statusCode 2XX
+                error == nil                                  // was there no error
+                    
+                else { return }
+             
+                do {
+                    guard let pokemon = try? JSONDecoder().decode(DetailPokemon.self, from: data) else { return }
+                    
+                    for pok in pokemon.abilities {
+                        let name = pok.ability
+                        print("NameDetail: \(name)")
+                    }
+
+                    completion(pokemon)
+                }
+
+            }.resume()
+        }
+    
+        
+    }
+    
+//
+

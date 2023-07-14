@@ -19,6 +19,43 @@ struct SpecificPokemon: Codable {
     var url: String
 }
 
+struct DetailPokemon: Codable {
+    let id: Int
+    let abilities: [Ability]
+    let sprites: PokemonSprites
+    let height: Int
+    let weight: Int
+    let types: [TypeElement]
+    let species: Species
+    let moves: [Move]
+}
+
+struct Move: Codable {
+    let move: Species
+}
+
+struct Ability: Codable {
+    let ability: Species
+}
+
+struct TypeElement: Codable {
+    let type: Species
+}
+
+struct Species: Codable {
+    let name: String
+    let url: String
+}
+
+struct PokemonSprites: Codable {
+    var frontDefault: String
+    
+    enum CodingKeys: String, CodingKey {
+        case frontDefault = "front_default"
+    }
+}
+
+
 
 
 
