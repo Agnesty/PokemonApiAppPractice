@@ -13,6 +13,7 @@ class DetailViewController: UIViewController {
     var url: String = ""
     var ability: [Ability] = []
     var detailPokemon: DetailPokemon?
+    var coredataManager = CoreDataManager()
     
     @IBOutlet weak var moveSegmentView: UIView!
     @IBOutlet weak var aboutSegementView: UIView!
@@ -58,6 +59,35 @@ class DetailViewController: UIViewController {
             image.transform = CGAffineTransform(scaleX: scaleFactor, y: scaleFactor)
         }
     }
+    
+    @IBAction func favorite(_ sender: UIButton) {
+        //Isi Image
+        guard let urlImage = self.detailPokemon?.sprites.frontDefault else { return }
+        
+        //Isi Species
+        guard let species = self.detailPokemon?.species.name.capitalized else { return }
+        
+        //Isi Ability
+        guard let ability = self.detailPokemon?
+            .abilities.map({$0.ability.name.capitalized}).joined(separator: ", ") else { return }
+
+        //Isi Types
+        guard let types = self.detailPokemon?
+            .types.map({$0.type.name.capitalized}).joined(separator: ", ") else { return }
+        
+//        func showAlert() {
+//            let alert = UIAlertController(title: "Data Created", message: "Data has been successfully created.", preferredStyle: .alert)
+//            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+//            alert.addAction(okAction)
+//            present(alert, animated: true, completion: nil)
+//        }
+        
+        coredataManager.create(species, types, ability, urlImage)
+//        showAlert()
+//        coredataManager.retreive()
+//        coredataManager.retrieve()
+    }
+    
     @IBAction func segmentControlAction(_ sender: UISegmentedControl)
     {
         switch segmentControlOutlet.selectedSegmentIndex
@@ -78,4 +108,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var isiWeight: UILabel!
     @IBOutlet weak var isiAbility: UILabel!
     @IBOutlet weak var isiTypes: UILabel!
+    
+   
+    
 }

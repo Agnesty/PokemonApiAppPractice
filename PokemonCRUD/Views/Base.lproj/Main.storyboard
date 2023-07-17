@@ -39,7 +39,7 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="238-2X-far" secondAttribute="trailing" constant="25" id="tQe-8c-KUX"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Table" id="WHy-jy-ekv"/>
+                    <tabBarItem key="tabBarItem" title="Table" image="folder.circle.fill" catalog="system" id="WHy-jy-ekv"/>
                     <connections>
                         <outlet property="tableView" destination="238-2X-far" id="VUf-gQ-g2y"/>
                     </connections>
@@ -122,6 +122,7 @@
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="CSW-AE-YzV"/>
                         <segue destination="WRf-JH-wys" kind="relationship" relationship="viewControllers" id="moZ-2m-Ypk"/>
+                        <segue destination="1w9-W8-Dty" kind="relationship" relationship="viewControllers" id="OtD-KV-NIt"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hbk-qJ-XpT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -132,7 +133,7 @@
         <scene sceneID="NVw-h6-PU2">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WRf-JH-wys" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Collection" id="q4Y-2d-dHX"/>
+                    <tabBarItem key="tabBarItem" title="Collection" image="list.clipboard.fill" catalog="system" id="q4Y-2d-dHX"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="JMm-i0-ZJm">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
@@ -147,8 +148,51 @@
             </objects>
             <point key="canvasLocation" x="968.70229007633588" y="311.97183098591552"/>
         </scene>
+        <!--Favorite-->
+        <scene sceneID="BPf-Zj-ebp">
+            <objects>
+                <viewController storyboardIdentifier="FavoriteViewController" id="1w9-W8-Dty" customClass="FavoriteViewController" customModule="PokemonCRUD" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="O8c-lE-VRI">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Favorite Pokemon" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tuc-nx-7xv">
+                                <rect key="frame" x="25" y="59" width="343" height="39"/>
+                                <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Ojh-kT-rld">
+                                <rect key="frame" x="25" y="98" width="343" height="671"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="3wj-3v-F0y"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Ojh-kT-rld" firstAttribute="bottom" secondItem="3wj-3v-F0y" secondAttribute="bottom" id="FNb-g6-Fa4"/>
+                            <constraint firstItem="3wj-3v-F0y" firstAttribute="trailing" secondItem="tuc-nx-7xv" secondAttribute="trailing" constant="25" id="IhE-WN-azK"/>
+                            <constraint firstItem="3wj-3v-F0y" firstAttribute="trailing" secondItem="Ojh-kT-rld" secondAttribute="trailing" constant="25" id="fxW-oP-I94"/>
+                            <constraint firstItem="Ojh-kT-rld" firstAttribute="top" secondItem="tuc-nx-7xv" secondAttribute="bottom" id="nJT-dp-ksx"/>
+                            <constraint firstItem="tuc-nx-7xv" firstAttribute="top" secondItem="3wj-3v-F0y" secondAttribute="top" id="qKE-qw-7D1"/>
+                            <constraint firstItem="Ojh-kT-rld" firstAttribute="leading" secondItem="3wj-3v-F0y" secondAttribute="leading" constant="25" id="vaW-5L-2Pt"/>
+                            <constraint firstItem="tuc-nx-7xv" firstAttribute="leading" secondItem="3wj-3v-F0y" secondAttribute="leading" constant="25" id="xcS-mw-SzM"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Favorite" image="heart.circle.fill" catalog="system" id="WhJ-iJ-Vqj"/>
+                    <connections>
+                        <outlet property="tableFavorite" destination="Ojh-kT-rld" id="Hji-nH-t3o"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yFG-Ec-ODc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="70.992366412213741" y="806.33802816901414"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="folder.circle.fill" catalog="system" width="128" height="123"/>
+        <image name="heart.circle.fill" catalog="system" width="128" height="123"/>
+        <image name="list.clipboard.fill" catalog="system" width="103" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -32,10 +32,24 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CI1-F5-RKY">
+                                        <rect key="frame" x="298" y="213" width="70" height="70"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="70" id="rhz-IK-4uB"/>
+                                            <constraint firstAttribute="height" constant="70" id="s80-P9-Tjt"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="heart" catalog="system"/>
+                                        <connections>
+                                            <action selector="favorite:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="T6y-JK-GWx"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.80000000000000004" blue="0.0" alpha="0.70423737582781454" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="300" id="48l-EA-TA1"/>
+                                    <constraint firstAttribute="bottom" secondItem="CI1-F5-RKY" secondAttribute="bottom" constant="17" id="7Eb-dU-GRV"/>
+                                    <constraint firstAttribute="trailing" secondItem="CI1-F5-RKY" secondAttribute="trailing" constant="25" id="9CR-LM-lZT"/>
                                     <constraint firstItem="zFP-mr-wOZ" firstAttribute="top" secondItem="KJ5-ch-Bty" secondAttribute="top" constant="67" id="N1L-hM-Mba"/>
                                     <constraint firstAttribute="trailing" secondItem="zFP-mr-wOZ" secondAttribute="trailing" constant="35" id="P9Z-Fw-iIN"/>
                                     <constraint firstItem="lq4-Nl-9us" firstAttribute="top" secondItem="KJ5-ch-Bty" secondAttribute="top" constant="120" id="U3W-Rr-NVh"/>
@@ -211,6 +225,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="09V-xT-fDI"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="4vz-82-qyd" firstAttribute="top" secondItem="pz9-tD-rUw" secondAttribute="bottom" constant="25.329999999999998" id="5l4-Ch-ijC"/>
@@ -269,6 +284,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="7EF-rw-xWX"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="KAF-YB-N4u" firstAttribute="top" secondItem="0gf-RA-VKL" secondAttribute="topMargin" constant="10" id="BG0-MT-l3L"/>
@@ -300,6 +316,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="fde-ZM-NFx"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="bottomMargin" secondItem="HDq-gL-UiP" secondAttribute="bottom" id="HsM-WM-2ha"/>
@@ -318,6 +335,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="heart" catalog="system" width="128" height="107"/>
         <systemColor name="opaqueSeparatorColor">
             <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
