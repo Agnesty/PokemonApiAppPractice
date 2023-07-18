@@ -83,37 +83,37 @@ class CoreDataManager: UIViewController {
 
 
     
-//    @discardableResult func retreive() -> [Favorite] {
-//
-//        //Array Model
-//        var favorites = [Favorite]()
-//
-//        //managed context
-//        let managedContext = appDelegate?.persistentContainer.viewContext
-//
-//        //fetch data
-//        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "FavoritePokemon")
-//
-//        do {
-//            let result = try managedContext?.fetch(fetchRequest) as! [NSManagedObject]
-//
-//            result.forEach { favorite in
-//                favorites.append(
-//                    Favorite(
-//                        imagePoke: favorite.value(forKey: "imagePoke") as! String,
-//                        speciesPoke: favorite.value(forKey: "speciesPoke") as! String,
-//                        abilityPoke: favorite.value(forKey: "abilityPoke") as! String,
-//                        typePoke: favorite.value(forKey: "typePoke") as! String
-//                    )
-//                )
-//                print(favorites as Any)
-//            }
-//        } catch let error {
-//            print("Failed to catch data", error)
-//        }
-//
-//        return favorites
-//    }
+    @discardableResult func retreive() -> [Favorite] {
+
+        //Array Model
+        var favorites = [Favorite]()
+
+        //managed context
+        let managedContext = appDelegate?.persistentContainer.viewContext
+
+        //fetch data
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "FavoritePokemon")
+
+        do {
+            let result = try managedContext?.fetch(fetchRequest) as! [NSManagedObject]
+
+            result.forEach { favorite in
+                favorites.append(
+                    Favorite(
+                        imagePoke: favorite.value(forKey: "imagePoke") as! String,
+                        speciesPoke: favorite.value(forKey: "speciesPoke") as! String,
+                        abilityPoke: favorite.value(forKey: "abilityPoke") as! String,
+                        typePoke: favorite.value(forKey: "typePoke") as! String
+                    )
+                )
+                print(favorites as Any)
+            }
+        } catch let error {
+            print("Failed to catch data", error)
+        }
+
+        return favorites
+    }
     
     func retrieve(completion: @escaping ([Favorite]) -> Void) {
         // Array Model
@@ -171,6 +171,57 @@ class CoreDataManager: UIViewController {
             print("Unable to delete data", error)
         }
     }
+    
+    
+    //MARK: CHECK APAKAH INI SUDAH DIFAVORITKAN ATAU BELUM
+    func isFavorite(_ species: String) -> Bool {
+        //managed context
+        guard let managedContext = appDelegate?.persistentContainer.viewContext else { return false }
+
+        //fetch data
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "FavoritePokemon")
+        fetchRequest.predicate = NSPredicate(format: "speciesPoke = %@", species)
+        fetchRequest.fetchLimit = 1
+
+        do {
+            let count = try managedContext.count(for: fetchRequest)
+            return count > 0
+        } catch let error {
+            print("Failed to fetch data", error)
+            return false
+        }
+    }
+    
+    //MARK: UPDATE DATA EDIT POKEMON
+    func updateData( speci: String, with newName: String, namaDatadiCoreData: String ) {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+
+        let managedContext = appDelegate.persistentContainer.viewContext
+
+        let fetchRequest: NSFetchRequest<NSManagedObject> = NSFetchRequest(entityName: "FavoritePokemon")
+            let modifiedPredicateFormat = "\(namaDatadiCoreData) = %@"
+            fetchRequest.predicate = NSPredicate(format: modifiedPredicateFormat, speci)
+
+        do {
+          let fetchedResults = try managedContext.fetch(fetchRequest)
+
+          if let pokemon = fetchedResults.first {
+            pokemon.setValue(newName, forKey: namaDatadiCoreData)
+              print("ini adalah hasil edit: \(newName)")
+
+            do {
+              try managedContext.save()
+                retreive()
+              print("Data updated successfully")
+            } catch{
+              print("Failed to update data: (error), (error.userInfo)", error)
+            }
+          }
+        } catch {
+          print("Fetch error: (error), (error.userInfo)", error)
+        }
+//        isChange = true
+      }
 
     
 }

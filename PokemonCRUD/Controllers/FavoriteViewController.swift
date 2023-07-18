@@ -11,6 +11,7 @@ class FavoriteViewController: UIViewController, UITableViewDataSource, UITableVi
     
     var pokemonFavorites: [Favorite] = []
     var coredataManager = CoreDataManager()
+    var detailVC : DetailViewController?
     
     @IBOutlet weak var tableFavorite: UITableView! {
         didSet {
@@ -29,6 +30,10 @@ class FavoriteViewController: UIViewController, UITableViewDataSource, UITableVi
     override func viewWillAppear(_ animated: Bool) {
         coredataManager.retrieve { favorites in
             self.pokemonFavorites = favorites
+            print("pokemonFavorites count: \(self.pokemonFavorites.count)")
+            self.pokemonFavorites.forEach { favorite in
+                print("species: \(favorite.speciesPoke)")
+            }
             print(self.pokemonFavorites.count)
             DispatchQueue.main.async {
                 self.tableFavorite.reloadData()
@@ -61,6 +66,7 @@ class FavoriteViewController: UIViewController, UITableViewDataSource, UITableVi
         return 120
     }
     
+    //Fungsi untuk di Delete
     func handleMoveToTrash(indexPath: IndexPath) {
         let pokemon = pokemonFavorites[indexPath.row]
         coredataManager.delete(pokemon.speciesPoke) {
@@ -69,18 +75,45 @@ class FavoriteViewController: UIViewController, UITableViewDataSource, UITableVi
                 self?.tableFavorite.deleteRows(at: [indexPath], with: .fade)
             }
         }
-        
+        let isFavorite = coredataManager.isFavorite(pokemon.speciesPoke)
+        let favoriteImage = isFavorite ? UIImage(systemName: "heart.fill") : UIImage(systemName: "heart")
+            detailVC?.favoriteButton.setImage(favoriteImage, for: .normal)
         print("Moved to trash")
     }
     
+    //Fungsi untuk di Edit
+    private func handleMarkAsEdit(indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "EditData", bundle: nil)
+        guard let displayEdit = storyboard.instantiateViewController(withIdentifier: "EditDataViewController") as? EditDataViewController else { return }
+        
+        let pokemon = pokemonFavorites[indexPath.row]
+        displayEdit.modelsIndex = pokemon
+        print("Marked as edit")
+        
+        self.navigationController?.pushViewController(displayEdit, animated: true)
+    }
+    
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        //TRASH
         let trash = UIContextualAction(style: .destructive,
-                                       title: "Trash") { [weak self] (action, view, completionHandler) in
+                                       title: nil) { [weak self] (action, view, completionHandler) in
             self?.handleMoveToTrash(indexPath: indexPath)
             completionHandler(true)
         }
+        trash.image = UIImage(systemName: "trash")
         trash.backgroundColor = .systemRed
-        let configuration = UISwipeActionsConfiguration(actions: [trash])
+        
+        //EDIT
+        let edit = UIContextualAction(style: .destructive,
+                                       title: nil) { [weak self] (action, view, completionHandler) in
+            self?.handleMarkAsEdit(indexPath: indexPath)
+            completionHandler(true)
+            
+        }
+        edit.image = UIImage(systemName: "pencil")
+        edit.backgroundColor = .systemGreen
+        let configuration = UISwipeActionsConfiguration(actions: [trash, edit])
 
         return configuration
     }

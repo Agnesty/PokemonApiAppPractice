@@ -13,6 +13,8 @@
 		331FAA0C2A6129A2003C50B0 /* MoveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331FAA0B2A6129A2003C50B0 /* MoveViewController.swift */; };
 		331FAA0F2A613E42003C50B0 /* MoveTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331FAA0D2A613E42003C50B0 /* MoveTableViewCell.swift */; };
 		331FAA102A613E42003C50B0 /* MoveTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 331FAA0E2A613E42003C50B0 /* MoveTableViewCell.xib */; };
+		3348AC662A6630EE0093E406 /* EditData.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3348AC652A6630EE0093E406 /* EditData.storyboard */; };
+		3348AC682A66310D0093E406 /* EditDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3348AC672A66310D0093E406 /* EditDataViewController.swift */; };
 		334CC71B2A5FEF030040E1F0 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 334CC71A2A5FEF030040E1F0 /* SDWebImage */; };
 		334CC71D2A5FEF030040E1F0 /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 334CC71C2A5FEF030040E1F0 /* SDWebImageMapKit */; };
 		3391BE672A64F58A0065F6C0 /* CoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3391BE652A64F58A0065F6C0 /* CoreData.xcdatamodeld */; };
@@ -45,6 +47,8 @@
 		331FAA0B2A6129A2003C50B0 /* MoveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveViewController.swift; sourceTree = "<group>"; };
 		331FAA0D2A613E42003C50B0 /* MoveTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveTableViewCell.swift; sourceTree = "<group>"; };
 		331FAA0E2A613E42003C50B0 /* MoveTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MoveTableViewCell.xib; sourceTree = "<group>"; };
+		3348AC652A6630EE0093E406 /* EditData.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditData.storyboard; sourceTree = "<group>"; };
+		3348AC672A66310D0093E406 /* EditDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDataViewController.swift; sourceTree = "<group>"; };
 		3391BE662A64F58A0065F6C0 /* CoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreData.xcdatamodel; sourceTree = "<group>"; };
 		3391BE682A64F9440065F6C0 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		3391BE6A2A64FA9A0065F6C0 /* FavoriteViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewCell.swift; sourceTree = "<group>"; };
@@ -135,6 +139,7 @@
 				331FAA092A612991003C50B0 /* BaseStatsViewController.swift */,
 				331FAA0B2A6129A2003C50B0 /* MoveViewController.swift */,
 				3391BE652A64F58A0065F6C0 /* CoreData.xcdatamodeld */,
+				3348AC672A66310D0093E406 /* EditDataViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -152,6 +157,7 @@
 				33A2BB9C2A5E96F3002E8F43 /* DetailView.storyboard */,
 				3391BE6A2A64FA9A0065F6C0 /* FavoriteViewCell.swift */,
 				3391BE6B2A64FA9A0065F6C0 /* FavoriteViewCell.xib */,
+				3348AC652A6630EE0093E406 /* EditData.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -239,6 +245,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3348AC662A6630EE0093E406 /* EditData.storyboard in Resources */,
 				3391BE6D2A64FA9A0065F6C0 /* FavoriteViewCell.xib in Resources */,
 				33A2BB7D2A5E3939002E8F43 /* LaunchScreen.storyboard in Resources */,
 				331FAA102A613E42003C50B0 /* MoveTableViewCell.xib in Resources */,
@@ -259,6 +266,7 @@
 			files = (
 				331FAA042A60DEDB003C50B0 /* Extension.swift in Sources */,
 				3391BE6F2A64FFFC0065F6C0 /* FavoritePokemon.swift in Sources */,
+				3348AC682A66310D0093E406 /* EditDataViewController.swift in Sources */,
 				33A2BB9B2A5E96BD002E8F43 /* DetailViewController.swift in Sources */,
 				3391BE712A6513DE0065F6C0 /* CoreDataManager.swift in Sources */,
 				3391BE672A64F58A0065F6C0 /* CoreData.xcdatamodeld in Sources */,

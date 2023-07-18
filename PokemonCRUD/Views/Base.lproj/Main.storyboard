@@ -107,7 +107,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KfT-BL-IsX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1895.4198473282443" y="311.97183098591552"/>
+            <point key="canvasLocation" x="2822.1374045801526" y="311.97183098591552"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Zhd-Xs-N7l">
@@ -122,7 +122,7 @@
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="CSW-AE-YzV"/>
                         <segue destination="WRf-JH-wys" kind="relationship" relationship="viewControllers" id="moZ-2m-Ypk"/>
-                        <segue destination="1w9-W8-Dty" kind="relationship" relationship="viewControllers" id="OtD-KV-NIt"/>
+                        <segue destination="5gd-4a-zCT" kind="relationship" relationship="viewControllers" id="OtD-KV-NIt"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hbk-qJ-XpT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -146,9 +146,9 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cNQ-Wv-OvK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="968.70229007633588" y="311.97183098591552"/>
+            <point key="canvasLocation" x="1895.4198473282443" y="311.97183098591552"/>
         </scene>
-        <!--Favorite-->
+        <!--Favorite View Controller-->
         <scene sceneID="BPf-Zj-ebp">
             <objects>
                 <viewController storyboardIdentifier="FavoriteViewController" id="1w9-W8-Dty" customClass="FavoriteViewController" customModule="PokemonCRUD" customModuleProvider="target" sceneMemberID="viewController">
@@ -157,13 +157,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Favorite Pokemon" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tuc-nx-7xv">
-                                <rect key="frame" x="25" y="59" width="343" height="39"/>
+                                <rect key="frame" x="25" y="103" width="343" height="39"/>
                                 <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Ojh-kT-rld">
-                                <rect key="frame" x="25" y="98" width="343" height="671"/>
+                                <rect key="frame" x="25" y="142" width="343" height="627"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                         </subviews>
@@ -179,12 +179,31 @@
                             <constraint firstItem="tuc-nx-7xv" firstAttribute="leading" secondItem="3wj-3v-F0y" secondAttribute="leading" constant="25" id="xcS-mw-SzM"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Favorite" image="heart.circle.fill" catalog="system" id="WhJ-iJ-Vqj"/>
+                    <navigationItem key="navigationItem" id="fZg-rs-e2l"/>
                     <connections>
                         <outlet property="tableFavorite" destination="Ojh-kT-rld" id="Hji-nH-t3o"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yFG-Ec-ODc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="997.70992366412213" y="806.33802816901414"/>
+        </scene>
+        <!--Favorite-->
+        <scene sceneID="toL-Xb-45n">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5gd-4a-zCT" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Favorite" image="heart.circle.fill" catalog="system" id="WhJ-iJ-Vqj"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dXn-2D-0Zy">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="1w9-W8-Dty" kind="relationship" relationship="rootViewController" id="bqe-Yb-6UA"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lT7-Lg-EoZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="70.992366412213741" y="806.33802816901414"/>
         </scene>

@@ -21,6 +21,8 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.tabBarController?.tabBar.isHidden = true
+        
         self.view.bringSubviewToFront(aboutSegementView)
         
         PokemonManager().getDetail(abilitiesURL: url) { detailPokemon in
@@ -60,6 +62,7 @@ class DetailViewController: UIViewController {
         }
     }
     
+    @IBOutlet weak var favoriteButton: UIButton!
     @IBAction func favorite(_ sender: UIButton) {
         //Isi Image
         guard let urlImage = self.detailPokemon?.sprites.frontDefault else { return }
@@ -83,6 +86,7 @@ class DetailViewController: UIViewController {
 //        }
         
         coredataManager.create(species, types, ability, urlImage)
+        favoriteButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
 //        showAlert()
 //        coredataManager.retreive()
 //        coredataManager.retrieve()
