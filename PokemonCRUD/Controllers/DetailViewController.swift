@@ -9,45 +9,37 @@ import UIKit
 import SDWebImage
 
 class DetailViewController: UIViewController {
+    private var url: String = ""
+    private let detailViewModel = DetailViewModel()
     
-    var url: String = ""
-    var ability: [Ability] = []
-    var detailPokemon: DetailPokemon?
-    var coredataManager = CoreDataManager()
+    func setUrlString(url: String) {
+        self.url = url
+    }
     
-    @IBOutlet weak var moveSegmentView: UIView!
-    @IBOutlet weak var aboutSegementView: UIView!
-    @IBOutlet weak var baseStatsSegmentView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.tabBarController?.tabBar.isHidden = true
-        
         self.view.bringSubviewToFront(aboutSegementView)
         
-        PokemonManager().getDetail(abilitiesURL: url) { detailPokemon in
-            self.detailPokemon = detailPokemon
-            print("sprites \(String(describing: self.detailPokemon?.sprites))")
-            
-            DispatchQueue.main.async {
-                //ID
-                guard let id = self.detailPokemon?.id else {
-                    self.id.text = ""
-                    return
-                }
-                self.id.text = String("#\(id)")
-                
-                //Load Image
-                guard let urlImage = URL(string: (self.detailPokemon?.sprites.frontDefault)!) else { return }
-                self.image.sd_setImage(with: urlImage)
-                
-//                guard let moveVC = self.storyboard?.instantiateViewController(identifier: "MoveViewController") as? MoveViewController else { return }
-            }
-
-        }
+        detailViewModel.detailViewController = self
+        detailViewModel.getDetailCoba(abilitiesUrl: url)
         
+//        detailViewModel.getDetail(abilitiesUrl: url) { detailPokemon in
+//            DispatchQueue.main.async { [weak self] in
+//                guard let unwrappedSelf = self else { return }
+//                unwrappedSelf.id.text = "#\(detailPokemon.id)"
+//
+//                //Load Image
+//                guard let urlImage = URL(string: (detailPokemon.sprites.frontDefault)) else { return }
+//                unwrappedSelf.image.sd_setImage(with: urlImage)
+//            }
+//        }
     }
     
+    @IBOutlet weak var moveSegmentView: UIView!
+    @IBOutlet weak var aboutSegementView: UIView!
+    @IBOutlet weak var baseStatsSegmentView: UIView!
     @IBOutlet weak var viewBackground: UIView! {
         didSet {
             viewBackground.roundCorners(corners: [.bottomLeft, .bottomRight], radius: 35)
@@ -61,37 +53,15 @@ class DetailViewController: UIViewController {
             image.transform = CGAffineTransform(scaleX: scaleFactor, y: scaleFactor)
         }
     }
-    
     @IBOutlet weak var favoriteButton: UIButton!
     @IBAction func favorite(_ sender: UIButton) {
-        //Isi Image
-        guard let urlImage = self.detailPokemon?.sprites.frontDefault else { return }
         
-        //Isi Species
-        guard let species = self.detailPokemon?.species.name.capitalized else { return }
-        
-        //Isi Ability
-        guard let ability = self.detailPokemon?
-            .abilities.map({$0.ability.name.capitalized}).joined(separator: ", ") else { return }
-
-        //Isi Types
-        guard let types = self.detailPokemon?
-            .types.map({$0.type.name.capitalized}).joined(separator: ", ") else { return }
-        
-//        func showAlert() {
-//            let alert = UIAlertController(title: "Data Created", message: "Data has been successfully created.", preferredStyle: .alert)
-//            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-//            alert.addAction(okAction)
-//            present(alert, animated: true, completion: nil)
-//        }
-        
-        coredataManager.create(species, types, ability, urlImage)
+        detailViewModel.createCoreData()
         favoriteButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-//        showAlert()
+        
 //        coredataManager.retreive()
 //        coredataManager.retrieve()
     }
-    
     @IBAction func segmentControlAction(_ sender: UISegmentedControl)
     {
         switch segmentControlOutlet.selectedSegmentIndex
@@ -112,7 +82,4 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var isiWeight: UILabel!
     @IBOutlet weak var isiAbility: UILabel!
     @IBOutlet weak var isiTypes: UILabel!
-    
-   
-    
 }

@@ -11,6 +11,7 @@ var urlMoves = ""
 
 class MoveViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    private let moveViewModel = MoveViewModel()
     @IBOutlet weak var tableViewMove: UITableView! {
         didSet{
             tableViewMove.dataSource = self
@@ -19,14 +20,14 @@ class MoveViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
-    var detailPokemon: DetailPokemon?
-    
-    func sendConfigurationURLToMoves(_ data: String) {
-        urlMoves = data
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        moveViewModel.moveViewController = self
+        moveViewModel.getDetailMoves(urlMoves: urlMoves)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let pokeDetail = detailPokemon else { return 0 }
+        guard let pokeDetail = moveViewModel.detailPokemon else { return 0 }
         return pokeDetail.moves.count
     }
 
@@ -36,7 +37,7 @@ class MoveViewController: UIViewController, UITableViewDelegate, UITableViewData
             return UITableViewCell()
         }
 
-        let pokemon = detailPokemon?.moves[indexPath.row]
+        let pokemon = moveViewModel.detailPokemon?.moves[indexPath.row]
         cell.namaMove.text = pokemon?.move.name
         
                 return cell
@@ -45,20 +46,6 @@ class MoveViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad() 
-        
-        PokemonManager().getDetail(abilitiesURL: urlMoves) { detailPokemon in
-            self.detailPokemon = detailPokemon
-            print("sprites upupupuupu \(String(describing: self.detailPokemon?.moves[0].move.name))")
-            
-            DispatchQueue.main.async {
-                self.tableViewMove.reloadData()
-            }
-        }
-
     }
     
 //    func reloadTableView() {
@@ -77,4 +64,10 @@ class MoveViewController: UIViewController, UITableViewDelegate, UITableViewData
 //    }
     
 
+}
+
+extension MoveViewController: PokemonMoveDelegate {
+    func sendConfigurationURLToMoves(_ data: String) {
+        urlMoves = data
+    }
 }
