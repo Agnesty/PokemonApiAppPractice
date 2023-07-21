@@ -15,6 +15,9 @@ class CollectionController: UIViewController, UICollectionViewDelegate, UICollec
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        collectionViewModel.collectionViewController = self
+        
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.register(CollectionViewCell.nib(), forCellWithReuseIdentifier: CollectionViewCell.identifier)

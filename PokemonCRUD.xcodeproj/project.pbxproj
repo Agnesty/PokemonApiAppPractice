@@ -40,7 +40,7 @@
 		33A2BB892A5E3EA9002E8F43 /* PokemonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33A2BB872A5E3EA9002E8F43 /* PokemonCell.xib */; };
 		33A2BB8C2A5E3F64002E8F43 /* Pokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A2BB8B2A5E3F64002E8F43 /* Pokemon.swift */; };
 		33A2BB912A5E438D002E8F43 /* PokemonManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A2BB902A5E438D002E8F43 /* PokemonManager.swift */; };
-		33A2BB952A5E82AE002E8F43 /* CollectionCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A2BB942A5E82AE002E8F43 /* CollectionCellController.swift */; };
+		33A2BB952A5E82AE002E8F43 /* CollectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A2BB942A5E82AE002E8F43 /* CollectionController.swift */; };
 		33A2BB982A5E85B9002E8F43 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A2BB962A5E85B9002E8F43 /* CollectionViewCell.swift */; };
 		33A2BB992A5E85B9002E8F43 /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33A2BB972A5E85B9002E8F43 /* CollectionViewCell.xib */; };
 		33A2BB9B2A5E96BD002E8F43 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A2BB9A2A5E96BD002E8F43 /* DetailViewController.swift */; };
@@ -81,7 +81,7 @@
 		33A2BB872A5E3EA9002E8F43 /* PokemonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PokemonCell.xib; sourceTree = "<group>"; };
 		33A2BB8B2A5E3F64002E8F43 /* Pokemon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pokemon.swift; sourceTree = "<group>"; };
 		33A2BB902A5E438D002E8F43 /* PokemonManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonManager.swift; sourceTree = "<group>"; };
-		33A2BB942A5E82AE002E8F43 /* CollectionCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionCellController.swift; sourceTree = "<group>"; };
+		33A2BB942A5E82AE002E8F43 /* CollectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionController.swift; sourceTree = "<group>"; };
 		33A2BB962A5E85B9002E8F43 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		33A2BB972A5E85B9002E8F43 /* CollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
 		33A2BB9A2A5E96BD002E8F43 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -161,7 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				33A2BB742A5E3938002E8F43 /* HomeController.swift */,
-				33A2BB942A5E82AE002E8F43 /* CollectionCellController.swift */,
+				33A2BB942A5E82AE002E8F43 /* CollectionController.swift */,
 				3391BE682A64F9440065F6C0 /* FavoriteViewController.swift */,
 				33A2BB9A2A5E96BD002E8F43 /* DetailViewController.swift */,
 				331FAA072A61297E003C50B0 /* AboutViewController.swift */,
@@ -308,7 +308,7 @@
 				331E1A0F2A690F8100FB51F1 /* AboutViewModel.swift in Sources */,
 				331E1A0B2A68E69E00FB51F1 /* CollectionViewModel.swift in Sources */,
 				331E1A112A691D2C00FB51F1 /* MoveViewModel.swift in Sources */,
-				33A2BB952A5E82AE002E8F43 /* CollectionCellController.swift in Sources */,
+				33A2BB952A5E82AE002E8F43 /* CollectionController.swift in Sources */,
 				33A2BB982A5E85B9002E8F43 /* CollectionViewCell.swift in Sources */,
 				33A2BB912A5E438D002E8F43 /* PokemonManager.swift in Sources */,
 				33A2BB752A5E3938002E8F43 /* HomeController.swift in Sources */,
